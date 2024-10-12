@@ -20,6 +20,7 @@ namespace Password_Manager
             InitializeComponent();
             // Загружаем данные при запуске программы
             LoadDataFromFile();
+            listBoxAccounts.SelectedIndexChanged += listBoxAccounts_SelectedIndexChanged;
         }
 
         // Генерация случайного пароля
@@ -61,8 +62,11 @@ namespace Password_Manager
                 return;
             }
 
-            // Сохранение пароля в словаре
-            accounts[account] = password;
+            // Шифруем пароль перед сохранением
+            string encryptedPassword = EncryptDecrypt(password);
+
+            // Сохранение зашифрованного пароля в словаре
+            accounts[account] = encryptedPassword;
             listBoxAccounts.Items.Add(account);
 
             // Сохранение данных в файл
@@ -142,6 +146,20 @@ namespace Password_Manager
                 {
                     MessageBox.Show($"Ошибка при загрузке данных: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private void listBoxAccounts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string account = listBoxAccounts.SelectedItem?.ToString();
+
+            if (account != null && accounts.ContainsKey(account))
+            {
+                // Расшифровываем пароль перед отображением
+                string encryptedPassword = accounts[account];
+                string decryptedPassword = EncryptDecrypt(encryptedPassword);
+
+                textBoxPassword.Text = decryptedPassword;
             }
         }
     }

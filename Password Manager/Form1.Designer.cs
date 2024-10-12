@@ -9,7 +9,6 @@
         private System.Windows.Forms.NumericUpDown numericPasswordLength;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.ListBox listBoxAccounts;
-        private System.Windows.Forms.Button btnEncryptDecrypt;
 
         /// <summary>
         /// Освобождение всех используемых ресурсов.
@@ -28,95 +27,83 @@
 
         private void InitializeComponent()
         {
-            this.textBoxAccount = new System.Windows.Forms.TextBox();
-            this.textBoxPassword = new System.Windows.Forms.TextBox();
-            this.btnGenerate = new System.Windows.Forms.Button();
-            this.numericPasswordLength = new System.Windows.Forms.NumericUpDown();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.listBoxAccounts = new System.Windows.Forms.ListBox();
-            this.btnEncryptDecrypt = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.numericPasswordLength)).BeginInit();
-            this.SuspendLayout();
+            textBoxAccount = new TextBox();
+            textBoxPassword = new TextBox();
+            btnGenerate = new Button();
+            numericPasswordLength = new NumericUpDown();
+            btnSave = new Button();
+            listBoxAccounts = new ListBox();
+            ((System.ComponentModel.ISupportInitialize)numericPasswordLength).BeginInit();
+            SuspendLayout();
             // 
             // textBoxAccount
             // 
-            this.textBoxAccount.Location = new System.Drawing.Point(12, 12);
-            this.textBoxAccount.Name = "textBoxAccount";
-            this.textBoxAccount.Size = new System.Drawing.Size(250, 20);
-            this.textBoxAccount.TabIndex = 0;
-            this.textBoxAccount.PlaceholderText = "Имя учётной записи";
+            textBoxAccount.Location = new Point(12, 12);
+            textBoxAccount.Name = "textBoxAccount";
+            textBoxAccount.PlaceholderText = "Имя учётной записи";
+            textBoxAccount.Size = new Size(250, 23);
+            textBoxAccount.TabIndex = 0;
             // 
             // textBoxPassword
             // 
-            this.textBoxPassword.Location = new System.Drawing.Point(12, 50);
-            this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.Size = new System.Drawing.Size(250, 20);
-            this.textBoxPassword.TabIndex = 1;
-            this.textBoxPassword.ReadOnly = true;
-            this.textBoxPassword.PlaceholderText = "Сгенерированный пароль";
+            textBoxPassword.Location = new Point(12, 50);
+            textBoxPassword.Name = "textBoxPassword";
+            textBoxPassword.PlaceholderText = "Сгенерированный пароль";
+            textBoxPassword.ReadOnly = true;
+            textBoxPassword.Size = new Size(250, 23);
+            textBoxPassword.TabIndex = 1;
             // 
             // btnGenerate
             // 
-            this.btnGenerate.Location = new System.Drawing.Point(12, 85);
-            this.btnGenerate.Name = "btnGenerate";
-            this.btnGenerate.Size = new System.Drawing.Size(120, 30);
-            this.btnGenerate.TabIndex = 2;
-            this.btnGenerate.Text = "Сгенерировать";
-            this.btnGenerate.UseVisualStyleBackColor = true;
-            this.btnGenerate.Click += new System.EventHandler(this.btnGenerate_Click);
+            btnGenerate.Location = new Point(12, 85);
+            btnGenerate.Name = "btnGenerate";
+            btnGenerate.Size = new Size(120, 30);
+            btnGenerate.TabIndex = 2;
+            btnGenerate.Text = "Сгенерировать";
+            btnGenerate.UseVisualStyleBackColor = true;
+            btnGenerate.Click += btnGenerate_Click;
             // 
             // numericPasswordLength
             // 
-            this.numericPasswordLength.Location = new System.Drawing.Point(150, 92);
-            this.numericPasswordLength.Name = "numericPasswordLength";
-            this.numericPasswordLength.Size = new System.Drawing.Size(120, 20);
-            this.numericPasswordLength.TabIndex = 3;
-            this.numericPasswordLength.Value = 12;
+            numericPasswordLength.Location = new Point(150, 92);
+            numericPasswordLength.Name = "numericPasswordLength";
+            numericPasswordLength.Size = new Size(120, 23);
+            numericPasswordLength.TabIndex = 3;
+            numericPasswordLength.Value = new decimal(new int[] { 12, 0, 0, 0 });
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(12, 130);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(120, 30);
-            this.btnSave.TabIndex = 4;
-            this.btnSave.Text = "Сохранить пароль";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            btnSave.Location = new Point(12, 130);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(120, 30);
+            btnSave.TabIndex = 4;
+            btnSave.Text = "Сохранить пароль";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // listBoxAccounts
             // 
-            this.listBoxAccounts.FormattingEnabled = true;
-            this.listBoxAccounts.Location = new System.Drawing.Point(12, 180);
-            this.listBoxAccounts.Name = "listBoxAccounts";
-            this.listBoxAccounts.Size = new System.Drawing.Size(250, 95);
-            this.listBoxAccounts.TabIndex = 5;
-            // 
-            // btnEncryptDecrypt
-            // 
-            this.btnEncryptDecrypt.Location = new System.Drawing.Point(150, 130);
-            this.btnEncryptDecrypt.Name = "btnEncryptDecrypt";
-            this.btnEncryptDecrypt.Size = new System.Drawing.Size(120, 30);
-            this.btnEncryptDecrypt.TabIndex = 6;
-            this.btnEncryptDecrypt.Text = "Шифр/Дешифр";
-            this.btnEncryptDecrypt.UseVisualStyleBackColor = true;
-            this.btnEncryptDecrypt.Click += new System.EventHandler(this.btnEncryptDecrypt_Click);
+            listBoxAccounts.FormattingEnabled = true;
+            listBoxAccounts.ItemHeight = 15;
+            listBoxAccounts.Location = new Point(12, 180);
+            listBoxAccounts.Name = "listBoxAccounts";
+            listBoxAccounts.Size = new Size(250, 94);
+            listBoxAccounts.TabIndex = 5;
             // 
             // Form1
             // 
-            this.ClientSize = new System.Drawing.Size(284, 291);
-            this.Controls.Add(this.btnEncryptDecrypt);
-            this.Controls.Add(this.listBoxAccounts);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.numericPasswordLength);
-            this.Controls.Add(this.btnGenerate);
-            this.Controls.Add(this.textBoxPassword);
-            this.Controls.Add(this.textBoxAccount);
-            this.Name = "Form1";
-            this.Text = "Менеджер Паролей";
-            ((System.ComponentModel.ISupportInitialize)(this.numericPasswordLength)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            ClientSize = new Size(284, 291);
+            Controls.Add(listBoxAccounts);
+            Controls.Add(btnSave);
+            Controls.Add(numericPasswordLength);
+            Controls.Add(btnGenerate);
+            Controls.Add(textBoxPassword);
+            Controls.Add(textBoxAccount);
+            Name = "Form1";
+            Text = "Менеджер Паролей";
+            ((System.ComponentModel.ISupportInitialize)numericPasswordLength).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
